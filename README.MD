@@ -1,0 +1,1 @@
+![ESERCIZIO](IMG/EX.JPG)
