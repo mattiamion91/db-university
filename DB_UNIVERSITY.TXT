@@ -70,5 +70,3 @@ FROM `departments`;
 SELECT COUNT(ID) as 'prof senza numero'
 FROM `teachers`
 WHERE `PHONE` IS NULL;
-
-![ESERCIZIO](./IMG/EX.jpg)
