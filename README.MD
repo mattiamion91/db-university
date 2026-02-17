@@ -1,1 +1,1 @@
-![ESERCIZIO](IMG/EX.JPG)
+![ESERCIZIO](./IMG/EX.jpg)
