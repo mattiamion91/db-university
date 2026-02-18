@@ -7,18 +7,27 @@ Dopo aver testato le vostre query con MySQL Workbench, riportatele in un file tx
 
 1. Contare quanti iscritti ci sono stati ogni anno
 
-SELECT year(`enrolment_date`) AS `ANNO`, count(ID) AS `NUMERO ISCRITTI`
+SELECT year(`enrolment_date`) AS `ANNO`, COUNT(ID) AS `NUMERO ISCRITTI`
 FROM `students`
 GROUP BY year(`enrolment_date`)
 
 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 
-SELECT `office_address`, count(ID) AS `NR INSEGNANTI NELLO STESSO EDIFICIO`
+SELECT `office_address`, COUNT(ID) AS `NR INSEGNANTI NELLO STESSO EDIFICIO`
 FROM `teachers`
-group by `office_address`
+GROUP BY `office_address`
 
 3. Calcolare la media dei voti di ogni appello d'esame
+
+SELECT `exam_id`, AVG(vote) AS `media_voti`
+FROM `exam_student`
+GROUP BY `exam_id`
+
 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+SELECT `department_id`, COUNT(id)
+FROM `degrees`
+GROUP BY `department_id`
 
 # SELECT
 
