@@ -16,7 +16,7 @@ SELECT `degrees`.*, `departments`.`name`
 FROM `degrees`
 JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
 WHERE `degrees`.`level` = 'magistrale'
-AND `departments`.`name` = 'Dipartimento di Neuroscienze'
+AND `departments`.`name` = 'Dipartimento di Neuroscienze';
 
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
@@ -30,11 +30,31 @@ WHERE `teachers`.`id` = 44
 sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e
 nome
 
-SELECT distinct`students`.*, `degrees`.*, `departments`.`name`
+SELECT `students`.*, `degrees`.*, `departments`.`name`
 FROM `students`
 JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id`
 JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
 ORDER BY `students`.`surname` ASC, `students`.`name`;
+
+5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+SELECT `degrees`.*, `courses`.`name` as `corso` , `teachers`.`name`, `teachers`.`surname`
+FROM `degrees`
+JOIN `courses` ON `courses`.`degree_id` = `degrees`.`id`
+JOIN `course_teacher` ON `course_teacher`.`course_id` = `courses`.`id`
+JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`
+
+6. Selezionare tutti i docenti che insegnano nel Dipartimento di
+Matematica (54)
+
+SELECT DISTINCT `teachers`.*, `departments`.`name` as `dipartimento`
+FROM `teachers`
+JOIN `course_teacher` ON `course_teacher`.`teacher_id` = `teachers`.`id`
+JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`id`
+JOIN `degrees` ON `courses`.`degree_id` = `degrees`.`id`
+JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+WHERE `departments`.`name` = 'Dipartimento di Matematica'
+
 
 # Dopo aver creato un nuovo database nel vostro MySQL Workbench e aver importato lo schema allegato, eseguite le query del file allegato.
 
